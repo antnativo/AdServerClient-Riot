@@ -1,7 +1,11 @@
-tab1
-nodemon
-tab2
-sudo nodemon --exec ri public/tags public/components --ignore public/components
+Setup
+  1) npm install
+  2) Open Terminal
+    a) Tab 1 : sudo nodemon
+    b) Tab 2: sudo nodemon --exec ri public/tags public/components --ignore public/components
+  3) Go To: http://localhost:8082/
+  4) View Sponsored Ad on Top Right Rail
 
-browserstack
+
+To test in browser stack use this
 ./BrowserStackLocal H44s7jnVzhk93oxZ6nAG
