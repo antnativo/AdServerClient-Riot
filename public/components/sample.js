@@ -1,4 +1,8 @@
-riot.tag2('sample', '<h3>{message}</h3> <ul> <li each="{techs}">{name}</li> </ul>', 'sample,[riot-tag="sample"],[data-is="sample"]{ font-size: 2rem } sample h3,[riot-tag="sample"] h3,[data-is="sample"] h3{ color: #444 } sample ul,[riot-tag="sample"] ul,[data-is="sample"] ul{ color: #999 }', '', function(opts) {
+riot.tag2('sample', '<div class="{opts.wrapper}"> <h3>{message}</h3> <ul> <li each="{techs}">{name}</li> </ul> </div>', 'sample,[riot-tag="sample"],[data-is="sample"]{ font-size: 1em }', '', function(opts) {
+    if(opts.wrapperclass)
+      this.wrapperClass = opts.wrapper
+    else
+      this.wrapperClass = "sidebar-top"
     if(opts.list)
       this.message = opts.message
     else

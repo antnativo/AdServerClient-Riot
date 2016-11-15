@@ -1,10 +1,15 @@
 <sample>
+<div class = {opts.wrapper}>
   <h3>{ message }</h3>
   <ul>
     <li each={ techs }>{ name }</li>
   </ul>
-
+</div>
   <script>
+    if(opts.wrapperclass)
+      this.wrapperClass = opts.wrapper
+    else
+      this.wrapperClass = "sidebar-top"
     if(opts.list)
       this.message = opts.message
     else
@@ -18,10 +23,7 @@
         { name: 'CSS' }
       ]
   </script>
-
   <style scoped>
-    :scope { font-size: 2rem }
-    h3 { color: #444 }
-    ul { color: #999 }
+    :scope { font-size: 1em }
   </style>
 </sample>

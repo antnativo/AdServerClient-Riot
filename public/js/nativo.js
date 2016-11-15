@@ -1,5 +1,5 @@
 function placeAd(response) { 
-  var   placement = document.querySelector(JSON.parse(response).selector);
+  var placement = document.querySelector(JSON.parse(response).selector);
   if (!placement) {
     setTimeout(function () { placeAd(response); },0)
     return null;

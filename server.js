@@ -36,8 +36,8 @@ server.get(/\/api\.*/,function indexHTML(req, res, next) {
             return;
         }
         data = "<script>" + data + "</script>" +
-          '<sample message ="' + getMessage() + '" list=\'{' + getList() + '}\'></sample>' +
-          '<script>riot.mount("' + componentList() + '")</script>';
+          '<sample message ="' + getMessage() + '" list=\'{' + getList() + '}\' wrapper="sidebar-top"></sample>' +
+          '<script>riot.mount("' + componentList() + '")</script><style>sample>div>h3{margin-left: 10px !important;margin-right:10px !important;max-width:280px !important;padding: 0px; !important;}sample>div{background: #fff !important;}</style>';
 
         res.send(200,{
           selector :"#my-ad-placement",
