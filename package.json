@@ -2,9 +2,8 @@
   "name": "adserverclientriot",
   "version": "1.0.0",
   "description": "Riot version of AdServerClient",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,6 +16,8 @@
   },
   "homepage": "https://github.com/antnativo/AdServerClient-Riot#readme",
   "devDependencies": {
+    "nodemon": "^1.11.0",
+    "request": "^2.78.0",
     "restify": "^4.3.0",
     "riot": "^2.6.7"
   }
