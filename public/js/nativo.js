@@ -1,10 +1,10 @@
-function placeAd(html) { 
-  var placement = document.querySelector("#my-ad-placement")
+function placeAd(response) { 
+  var   placement = document.querySelector(JSON.parse(response).selector);
   if (!placement) {
-    setTimeout(function () { placement(html); },0)
+    setTimeout(function () { placeAd(response); },0)
     return null;
   }
-  placement.innerHTML = html;
+  placement.innerHTML = JSON.parse(response).html;
   for (var i = 0; i < placement.children.length; i++)
     if (placement.children[i].tagName.toLowerCase() == "script") 
       window.eval( placement.children[i].textContent )
@@ -12,8 +12,7 @@ function placeAd(html) {
 function getAd(e) {
   var xhr = new XMLHttpRequest();
   xhr.open("get", "http://localhost:8082/api/")
-  xhr.onreadystatechange = function () { 
-    if (xhr.status >= 200 && xhr.status <= 300 || xht.status == 304)
+  xhr.onload = function () { 
       placeAd(xhr.responseText)
   }
   xhr.send(null)

@@ -35,13 +35,14 @@ server.get(/\/api\.*/,function indexHTML(req, res, next) {
             next(err);
             return;
         }
-
-        res.setHeader('Content-Type', 'text/html');
-        res.writeHead(200);
         data = "<script>" + data + "</script>" +
           '<sample message ="' + getMessage() + '" list=\'{' + getList() + '}\'></sample>' +
           '<script>riot.mount("' + componentList() + '")</script>';
-        res.end(data);
+
+        res.send(200,{
+          selector :"#my-ad-placement",
+          html:data.toString()
+        });
         next();
     });
 })
