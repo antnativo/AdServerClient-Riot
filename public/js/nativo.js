@@ -11,7 +11,7 @@ function placeAd(response) {
 }
 function getAd(e) {
   var xhr = new XMLHttpRequest();
-  xhr.open("get", "http://localhost:8082/api/")
+  xhr.open("get", "http://localhost:8082/api/",true)
   xhr.onload = function () { 
       placeAd(xhr.responseText)
   }
