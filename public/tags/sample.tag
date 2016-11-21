@@ -4,6 +4,9 @@
   <ul>
     <li each={ techs }>{ name }</li>
   </ul>
+  <yield from="content">
+  {html}
+  </yield>
 </div>
   <script>
     if(opts.wrapperclass)
