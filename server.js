@@ -37,7 +37,8 @@ server.get(/\/api\.*/,function indexHTML(req, res, next) {
         }
         data = "<script>" + data + "</script>" +
           '<div riot-tag="sample"  message ="' + getMessage() + '" list=\'{' + getList() + '}\' wrapper="sidebar-top">' +
-            '<yield to="content">' +
+          '<yield to="content">' +
+          '<script>console.log("yeilded!")</script>' +
               '<b>END OF LINE</b>' +
             '</yield>' +
           '</div>' +

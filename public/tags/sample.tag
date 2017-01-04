@@ -1,14 +1,16 @@
 <sample>
 <div class = {opts.wrapper}>
   <h3>{ message }</h3>
+    { none }
   <ul>
-    <li each={ techs }>{ name }</li>
+    <li each={ techs }> { name }</li>
   </ul>
   <yield from="content">
   {html}
   </yield>
 </div>
   <script>
+    this.none = this.content;
     if(opts.wrapperclass)
       this.wrapperClass = opts.wrapper
     else
@@ -25,6 +27,7 @@
         { name: 'JavaScript' },
         { name: 'CSS' }
       ]
+      this.on("load",function(){ alert() })
   </script>
   <style scoped>
     :scope { font-size: 1em }
