@@ -28,7 +28,7 @@ function placeAd(response) {
     if (typeof node != "undefined") {
          fun(node) // Doc: If script tag with inline code, parse
           for (var i = 0, len = node.childNodes.length; i < len; i++)
-          traverseNode(node.childNodes[i],fun) //Doc: determine each child if they are script tags with inline code. If not find the child's children --AC 5/23/16
+            traverseNode(node.childNodes[i],fun) //Doc: determine each child if they are script tags with inline code. If not find the child's children --AC 5/23/16
     }
   }
   
@@ -42,10 +42,10 @@ function placeAd(response) {
 
   //LOOP Through Nodes and Compile
   for (var i = 0; i < placement.children.length; i++)
-          if (compileInlineJavaScript(placement.children[i]) && typeof placement.children[i] == "undefined" ) {
-          } else
-            if ((typeof placement.children[i].children != "undefined" && placement.children[i].children.length))
-              traverseNode(placement.children[i], compileInlineJavaScript) // moved inline script to named function: compileInlineJavaScript -- AC 5/23/2016
+    if (compileInlineJavaScript(placement.children[i]) && typeof placement.children[i] == "undefined" ) {
+    } else
+      if ((typeof placement.children[i].children != "undefined" && placement.children[i].children.length))
+        traverseNode(placement.children[i], compileInlineJavaScript) // moved inline script to named function: compileInlineJavaScript -- AC 5/23/2016
 }
 function getAd(e) {
   var xhr = new XMLHttpRequest();
