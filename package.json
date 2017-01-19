@@ -17,8 +17,8 @@
   "devDependencies": {
     "concat-files": "^0.1.1",
     "nodemon": "^1.11.0",
-    "request": "^2.78.0",
+    "request": "^2.79.0",
     "restify": "^4.3.0",
-    "riot": "^2.6.7"
+    "riot": "^3.0.7"
   }
 }
