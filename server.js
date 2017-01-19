@@ -1,5 +1,6 @@
 var restify = require("restify");
 var fs = require("fs");
+var concat = require('concat-files');
 function getList() { 
   return JSON.stringify([{ name: "BCAA" }, { name: "Whey" }, { name: "PreWorkout" }]);
 }
@@ -7,7 +8,7 @@ function getMessage() {
   return "Sponsored"
 }
 function componentList() { 
-  return "sample"
+  return "sample,viewability"
 }
 
 //setup cors
@@ -29,27 +30,34 @@ server.opts(/.*/, function (req,res,next) {
     res.send(200);
     return next();
 });
-server.get(/\/api\.*/,function indexHTML(req, res, next) {
-    fs.readFile(__dirname + '/public/components/sample.js', function (err, data) {
-        if (err) {
-            next(err);
-            return;
-        }
-        data = "<script>" + data + "</script>" +
-          '<div riot-tag="sample"  message ="' + getMessage() + '" list=\'{' + getList() + '}\' wrapper="sidebar-top">' +
-          '<yield to="content">' +
-          '<script>console.log("yeilded!")</script>' +
-              '<b>END OF LINE</b>' +
-            '</yield>' +
-          '</div>' +
-          '<script>riot.mount("' + componentList() + '")</script><style>sample>div>h3{margin-left: 10px !important;margin-right:10px !important;max-width:280px !important;padding: 0px; !important;}div[riot-tag="sample"]>div{background: #fff !important;}</style>';
+server.get(/\/api\.*/, function indexHTML(req, res, next) {
+      concat([
+        'public/components/sample.js',
+        'public/components/viewability.js'
+      ], 'public/components/compiled.js', function(err) {
+          if (err) throw err
+          fs.readFile(__dirname + '/public/components/compiled.js', function (err, data) {
+            if (err) {
+                next(err);
+                return;
+            }
+            data = "<script>" + data + "</script>" +
+              '<div riot-tag="sample"  message ="' + getMessage() + '" list=\'{' + getList() + '}\' wrapper="sidebar-top">' +
+              '<yield to="content">' +
+              '<script>console.log("yeilded!")</script>' +
+                  '<b>END OF LINE</b>' +
+                '</yield>' +
+              '</div>' +
+              '<script>riot.mount("' + componentList() + '")</script><style>sample>div>h3{margin-left: 10px !important;margin-right:10px !important;max-width:280px !important;padding: 0px; !important;}div[riot-tag="sample"]>div{background: #fff !important;}</style>';
 
-        res.send(200,{
-          selector :"#my-ad-placement",
-          html:data.toString()
+            res.send(200,{
+              selector :"#my-ad-placement",
+              html:data.toString()
+            });
+            next();
         });
-        next();
-    });
+      });
+
 })
 server.get(/(.*)/,restify.serveStatic({
   directory: './public',

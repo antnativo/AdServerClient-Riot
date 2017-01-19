@@ -5,6 +5,7 @@
   <ul>
     <li each={ techs }> { name }</li>
   </ul>
+  <viewability></viewability>
   <yield from="content">
   {html}
   </yield>
@@ -28,6 +29,8 @@
         { name: 'CSS' }
       ]
       this.on("load",function(){ alert() })
+      //var viewability = this.mixin(checkComponentViewability)
+      //viewability.checkViewability()
   </script>
   <style scoped>
     :scope { font-size: 1em }

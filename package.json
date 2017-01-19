@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Riot version of AdServerClient",
   "main": "server.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/antnativo/AdServerClient-Riot.git"
@@ -16,6 +15,7 @@
   },
   "homepage": "https://github.com/antnativo/AdServerClient-Riot#readme",
   "devDependencies": {
+    "concat-files": "^0.1.1",
     "nodemon": "^1.11.0",
     "request": "^2.78.0",
     "restify": "^4.3.0",
