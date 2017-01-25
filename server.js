@@ -31,9 +31,9 @@ server.opts(/.*/, function (req,res,next) {
     return next();
 });
 server.get(/\/api\.*/, function indexHTML(req, res, next) {
-      concat([
-        'public/components/sample.js',
-        'public/components/viewability.js'
+  concat([
+        'public/mixin/viewability.js',
+        'public/components/sample.js'
       ], 'public/components/compiled.js', function(err) {
           if (err) throw err
           fs.readFile(__dirname + '/public/components/compiled.js', function (err, data) {
@@ -45,7 +45,7 @@ server.get(/\/api\.*/, function indexHTML(req, res, next) {
               '<div riot-tag="sample"  message ="' + getMessage() + '" list=\'{' + getList() + '}\' wrapper="sidebar-top">' +
               '<yield to="content">' +
               '<script>console.log("yeilded!")</script>' +
-                  '<b>END OF LINE</b>' +
+                  '<div class="sidebar-top"> <h3 class="old">Existing Ad - Sponsored</h3>  <ul> <li> Aplple</li><li> Orange</li><li> Banana</li> </ul> </div>' +
                 '</yield>' +
               '</div>' +
               '<script>riot.mount("' + componentList() + '")</script><style>sample>div>h3{margin-left: 10px !important;margin-right:10px !important;max-width:280px !important;padding: 0px; !important;}div[riot-tag="sample"]>div{background: #fff !important;}</style>';

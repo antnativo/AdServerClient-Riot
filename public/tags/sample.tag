@@ -29,10 +29,16 @@
         { name: 'CSS' }
       ]
       this.on("load",function(){ alert() })
-      //var viewability = this.mixin(checkComponentViewability)
-      //viewability.checkViewability()
+      var viewability = this.mixin(checkComponentViewability)
+      viewability.checkViewability()
   </script>
   <style scoped>
     :scope { font-size: 1em }
+    h3{
+      background: blue !important;
+    }
+    h3.old{
+      background:red  !important;
+    }
   </style>
 </sample>
